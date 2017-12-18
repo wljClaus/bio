@@ -1,0 +1,68 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+body{
+    background: #fff2e2;
+    font-family: "Lantinghei SC", "Open Sans", Arial, "Hiragino Sans GB", "Microsoft YaHei", "\5FAE\8F6F\96C5\9ED1", "STHeiti", "WenQuanYi Micro Hei", SimSun, sans-serif;;
+}
+.wrap{
+    width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+.header{  }
+.header .bio{
+    margin: 30px 0;
+    color: #87968e;
+    font-weight: bold;
+    font-size: 42px;
+}
+.header .bio-item{
+    color: #c6c9bb;
+    margin: 10px 0 15px 0;
+}
+.nav {
+    list-style: none;
+    margin: 40px 0;
+}
+.nav li{
+    text-decoration: none;
+    display: inline-block;
+}
+.nav .btn{
+    text-decoration: none;
+    color: #fff;
+    display: inline-block;
+    padding: 6px 14px;
+    margin: 3px;
+    background-color: #72b890;
+    font-size: 14px;
+    border-radius: 3px;
+}
+.nav .active{
+    opacity: 0.5;
+}
+.banner{
+    margin-bottom: 40px;
+}
+.footer{
+    font-size: 14px;
+}
+.footer .btn{
+    text-decoration: none;
+    display: inline-block;
+    padding: 6px 15px;
+    margin: 0 5px;
+    background-color: #72b890;
+    color: #fff;
+    border-radius: 4px;
+}
+.footer .to_me{
+    margin: 25px;
+    color: #87968e;
+}
+.footer .go{
+    text-decoration: none;
+    color: #72b890;
+}
