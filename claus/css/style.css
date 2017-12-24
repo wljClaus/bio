@@ -353,6 +353,9 @@ ul{
   padding: 0 15px;
   box-sizing: border-box;
 }
+.contact .main-title h1 {
+  color: #fff;
+}
 .contact .form-panel:before {
   content: '';
   clear: both;
