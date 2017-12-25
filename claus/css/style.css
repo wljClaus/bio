@@ -258,15 +258,17 @@ ul{
 }
 .timeline li:nth-child(odd) .timeline-panel {
   float: left;
-  width: 32%;
+  /*width: 32%;*/
   padding: 10px 20px 0 100px;
   text-align: right;
+  margin-right: calc(50% + 100px);
 }
 .timeline li:nth-child(even) .timeline-panel {
   float: right;
-  width: 32%;
+  /*width: 32%;*/
   padding: 10px 100px 0 20px;
   text-align: left;
+  margin-left: calc(50% + 100px);
 }
 .history .timeline > li:last-child {
   margin-bottom: 0;
