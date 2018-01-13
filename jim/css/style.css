@@ -1,0 +1,130 @@
+@font-face {
+    font-family: 'iconfont';  /* project id 539176 */
+    src: url('http://at.alicdn.com/t/font_539176_xjq3trfugd1s8aor.eot');
+    src: url('http://at.alicdn.com/t/font_539176_xjq3trfugd1s8aor.eot?#iefix') format('embedded-opentype'),
+    url('http://at.alicdn.com/t/font_539176_xjq3trfugd1s8aor.woff') format('woff'),
+    url('http://at.alicdn.com/t/font_539176_xjq3trfugd1s8aor.ttf') format('truetype'),
+    url('http://at.alicdn.com/t/font_539176_xjq3trfugd1s8aor.svg#iconfont') format('svg');
+}
+*{
+    margin: 0;
+    padding: 0;
+    font-style: normal;
+}
+body{
+    font-family: iconfont;
+    font-size: 16px;
+}
+a{
+    text-decoration: none;
+    cursor: pointer;
+}
+body,html,main{
+    height: 100%;
+}
+header .login {
+    float: right;
+    margin: 20px 20px 0 0;
+    width: 25px;
+    height: 25px;
+    text-align: center;
+    border-radius: 50%;
+    color: #fff;
+    background-color: #000;
+}
+header .login .icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 25px;
+    height: 25px;
+}
+main{
+    background: linear-gradient(to bottom left,rgba(189,166,151,.6),rgba(211,203,82,.3)), url("https://ws1.sinaimg.cn/large/006mhYGkgy1fndr1xgcutj31400p0qh2.jpg") center center no-repeat;
+    background-size: cover;
+}
+main .layer-pop {
+    display: none;
+}
+main .layer-content {
+    width: 400px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border: 1px solid;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    padding: 16px;
+    background-color: #fff;
+    box-shadow: 0 2px 3px 2px rgba(0,0,0,.3);
+}
+.tab .enter-btn,
+.tab .register-btn{
+    display: inline-block;
+    font-size: 16px;
+    margin: 0 10px 3px 10px;
+    color: #666;
+    cursor: pointer;
+}
+.close {
+    float: right;
+    font-size: 12px;
+    color: #2d2d2d;
+}
+.tab .active {
+    border-bottom: 2px solid #aaa;
+    font-size: 20px;
+    color: #2d2d2d;
+}
+form {
+    margin: 30px 0 15px 15px;
+}
+.layer-pop .text-style {
+    position: relative;
+    margin: 10px 0 18px 0;
+}
+.layer-pop .text-style i {
+    position: absolute;
+    top: 11px;
+    left: 10px;
+
+}
+.layer-pop .text-style .error-message {
+    position: absolute;
+    font-size: 14px;
+    color: red;
+}
+.layer-pop .text-style input[type='text'],
+.layer-pop .text-style input[type='password']{
+    width: 100%;
+    padding: 10px 10px 10px 28px;
+    outline: none;
+    box-sizing: border-box;
+}
+.layer-pop .text-style input[type='submit'] {
+    width: 90px;
+    height: 40px;
+    border-radius: 6px;
+    background-color: red;
+    color: #fff;
+    font-weight: bold;
+    font-size: 16px;
+    margin-top: 10px;
+    outline: none;
+}
+.layer-pop .text-style input[type='submit']:hover {
+    background-color: #158ebb;
+}
+
+.layer-pop.enter .register,
+.layer-pop.register .enter{
+    transform: translate(-50%, -50%) rotateY(180deg);
+    backface-visibility: hidden;
+    transition: all 1.5s;
+}
+.layer-pop.enter .enter ,
+.layer-pop.register .register{
+    transform:translate(-50%, -50%) rotateY(0deg);
+    backface-visibility: hidden;
+    transition: all 1.5s;
+}
