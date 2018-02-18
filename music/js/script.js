@@ -87,9 +87,6 @@ function getChannel(){
         data:{
             'channel': $('.header-title').attr('data-id')
         },
-        beforeSend:function (xhr) {
-            xhr.setRequestHeader("Access-Control-Allow-Origin","*")
-        },
         success: function(response){
             var channels = response.channels;
             var num = Math.floor(Math.random()*channels.length);
@@ -109,9 +106,6 @@ function getmusic(){
         url: 'http://api.jirengu.com/fm/getSong.php',
         dataType: 'json',
         Method: 'get',
-        beforeSend:function (xhr) {
-            xhr.setRequestHeader("Access-Control-Allow-Origin","*")
-        },
         success: function (ret) {
             var resource = ret.song[0];
             setMusicBySong(resource);
