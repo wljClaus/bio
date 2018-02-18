@@ -88,7 +88,7 @@ function getChannel(){
             'channel': $('.header-title').attr('data-id')
         },
         beforeSend:function (xhr) {
-            xhr.setRequestHeader("Access-Control-Allow-Origin","https://wljclaus.github.io/bio/music/")
+            xhr.setRequestHeader("Access-Control-Allow-Origin","*")
         },
         success: function(response){
             var channels = response.channels;
