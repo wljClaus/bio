@@ -87,6 +87,9 @@ function getChannel(){
         data:{
             'channel': $('.header-title').attr('data-id')
         },
+        beforeSend:function (xhr) {
+            xhr.setRequestHeader("Access-Control-Allow-Origin","https://wljclaus.github.io/bio/music/")
+        },
         success: function(response){
             var channels = response.channels;
             var num = Math.floor(Math.random()*channels.length);
