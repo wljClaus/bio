@@ -102,16 +102,14 @@ function getChannel(){
 
 // 通过ajax获取歌曲
 function getmusic(){
-    var song = {};
     $.ajax({
         url: 'http://api.jirengu.com/fm/getSong.php',
         dataType: 'json',
         Method: 'get',
         success: function (ret) {
-            var resource = ret.song[0],
-            song = resource;
-            setMusicBySong(song);
-            songList.push(song);
+            var resource = ret.song[0];
+            setMusicBySong(resource);
+            songList.push(resource);
             backmusic(songList);
         }
     })
