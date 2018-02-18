@@ -109,6 +109,9 @@ function getmusic(){
         url: 'http://api.jirengu.com/fm/getSong.php',
         dataType: 'json',
         Method: 'get',
+        beforeSend:function (xhr) {
+            xhr.setRequestHeader("Access-Control-Allow-Origin","*")
+        },
         success: function (ret) {
             var resource = ret.song[0];
             setMusicBySong(resource);
