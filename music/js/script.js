@@ -87,7 +87,6 @@ function getChannel(){
         data:{
             'channel': $('.header-title').attr('data-id')
         },
-        headers:{"appId":appId,"appKey":appKey,"Content-Type":"text/plain;charset=UTF-8"},
         success: function(response){
             var channels = response.channels;
             var num = Math.floor(Math.random()*channels.length);
