@@ -81,7 +81,7 @@ function _pause(){
 //获取频道信息
 function getChannel(){
     $.ajax({
-        url: 'http://api.jirengu.com/fm/getChannels.php',
+        url: 'https://api.jirengu.com/fm/getChannels.php',
         dataType: 'json',
         Method: 'get',
         data:{
@@ -103,7 +103,7 @@ function getChannel(){
 // 通过ajax获取歌曲
 function getmusic(){
     $.ajax({
-        url: 'http://api.jirengu.com/fm/getSong.php',
+        url: 'https://api.jirengu.com/fm/getSong.php',
         dataType: 'json',
         Method: 'get',
         success: function (ret) {
@@ -143,7 +143,7 @@ function setMusicBySong(song) {
 function getlyric(){
     var Sid = $('audio').attr('sid');
     var Ssid = $('audio').attr('ssid');
-    $.post('http://api.jirengu.com/fm/getLyric.php', {ssid: Ssid, sid: Sid})
+    $.post('https://api.jirengu.com/fm/getLyric.php', {ssid: Ssid, sid: Sid})
         .done(function (lyr){
             // console.log(lyr);
             var lyr = JSON.parse(lyr);;
