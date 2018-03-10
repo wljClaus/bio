@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css" rel="stylesheet">
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        ul {
+            list-style: none;
+        }
+        .wrap {
+            width: 900px;
+            margin: 0 auto;
+        }
+        #pic-ct {
+            position: relative;
+        }
+        #pic-ct .item {
+            position: absolute;
+            width: 280px;
+            margin: 10px;
+            border: 1px solid #ddd;
+            background: #fff;
+            /*opacity: 0;*/
+            transition: all .5s;
+        }
+        #pic-ct .item img {
+            margin: 10px;
+            width: 260px;
+            /*background-size: cover;*/
+        }
+        #pic-ct .header {
+            height: 25px;
+            margin: 0 12px;
+            border-bottom: 1px solid #ddd;
+        }
+        #pic-ct .desp {
+            margin: 10px 15px;
+            font-size: 12px;
+            line-height: 1.8;
+            color: #737373;
+        }
+
+        #load {
+            visibility: hidden;
+            height: 20px;
+        }
+        .hide {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <ul id="pic-ct">
+            <!--<li class="item">-->
+                <!--<a href="" class="link">-->
+                    <!--<img src="" alt="">-->
+                <!--</a>-->
+                <!--<h4 class="header"></h4>-->
+                <!--<p class="desp"></p>-->
+            <!--</li>-->
+            <li class="item hide"></li>
+        </ul>
+        <div id="load">隐藏元素</div>
+    </div>
+</body>
+<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>
+
+
+    //1. 获取数据
+    //2. 把数据变为 Dom，通过瀑布流的方式放到页面上
+    //3. 当滚动到底部的时候， --》 1
+    var curPage = 1
+    var perPageCount = 10
+    var colSumHeight = []
+    var nodeWidth = $('.item').outerWidth(true)
+    var colNum = Math.floor($('#pic-ct').width() / nodeWidth)
+    // for (var i = 0; i < colNum.length; i++) {
+    //     colSumHeight[i] = 0
+    // }
+    console.log(colSumHeight)
+    for (var i = 0; i < colNum; i++) {
+        colSumHeight[i] = 0
+    }
+
+    var isDataArrive = true
+
+
+    function waterFallPlace($nodes) {
+        $nodes.each(function () {
+            var $cur = $(this);
+            //colSumHeight = [100, 250, 80, 200]
+            var idx = 0,
+                minSumHeight = colSumHeight[0];
+            for (var i = 0; i < colSumHeight.length; i++) {
+                if (colSumHeight[i] < minSumHeight) {
+                    idx = i;
+                    minSumHeight = colSumHeight[i];
+                }
+            }
+            $cur.css({
+                left: nodeWidth * idx,
+                top: minSumHeight,
+                opacity: 1
+            });
+            colSumHeight[idx] = $cur.outerHeight(true) + colSumHeight[idx];
+            $('#pic-ct').height(Math.max.apply(null, colSumHeight));
+        });
+    }
+
+
+    start()
+    function start() {
+        getData(function (newsList) {
+            console.log(newsList)
+            isDataArrive = true
+            $.each(newsList, function (idx, news) {
+                var $node = getNode(news)
+                $node.find('img').load(function () {
+                    $('#pic-ct').append($node)
+                    // console.log($node, 'loaded...')
+                    waterFallPlace($node)
+                })
+            })
+        })
+        isDataArrive = false
+    }
+    $(window).scroll(function () {
+        if (!isDataArrive) return
+        if (isVisible($('#load'))) {
+            start()
+        }
+    })
+    function getData(callback) {
+        $.ajax({
+            url: 'http://platform.sina.com.cn/slide/album_tech',
+            dataType: 'jsonp',
+            jsonp: "jsoncallback",
+            data: {
+                app_key: '1271687855',
+                num: perPageCount,
+                page: curPage
+            }
+        }).done(function (ret) {
+            if (ret && ret.status && ret.status.code === "0") {
+                callback(ret.data);   //如果数据没问题，那么生成节点并摆放好位置
+                curPage++
+            } else {
+                console.log('get error data');
+            }
+        });
+    }
+    function getNode(item) {
+        var tpl = ''
+        tpl += '<li class="item">';
+        tpl += ' <a href="' + item.url + '" class="link"><img src="' + item.img_url + '" alt=""></a>';
+        tpl += ' <h4 class="header">' + item.short_name + '</h4>';
+        tpl += '<p class="desp">' + item.short_intro + '</p>';
+        tpl += '</li>';
+
+        return $(tpl)
+    }
+    // function waterFallPlace($node) {
+    //
+    //     var idx = 0,
+    //         minSumHeight = colSumHeight[0];
+    //
+    //     for (var i = 0; i < colSumHeight.length; i++) {
+    //         if (colSumHeight[i] < minSumHeight) {
+    //             idx = i;
+    //             minSumHeight = colSumHeight[i];
+    //         }
+    //     }
+    //     $node.css({
+    //         left: nodeWidth * idx,
+    //         top: minSumHeight,
+    //         opacity: 1
+    //     });
+    //     colSumHeight[idx] = $node.outerHeight(true) + colSumHeight[idx];
+    //     $('#pic-ct').height(Math.max.apply(null, colSumHeight));
+    // }
+    function isVisible($el) {
+        var scrollH = $(window).scrollTop(),
+            winH = $(window).height(),
+            top = $el.offset().top;
+        if (top < winH + scrollH) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    // 瀑布流
+    // var colSumHeight = [],
+    //     nodeWidth = $('.item').outerWidth(true),
+    //     colNum = parseInt($('#pic-ct').width() / nodeWidth);
+
+
+
+</script>
+</html>

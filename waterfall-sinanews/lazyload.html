@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>图片懒加载</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            margin: 0 auto;
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            text-align: center;
+            width: 700px;
+            flex-wrap: wrap;
+        }
+        li {
+            padding: 15px;
+        }
+        img {
+            width: 200px;
+            height: 200px;
+            background-size: cover;
+        }
+    </style>
+</head>
+<body>
+<ul class="container">
+    <li><img src="http://thinkfuture.com/wp-content/uploads/2013/10/loading_spinner.gif" alt="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/1.jpg"></li>
+    <li><img src="http://thinkfuture.com/wp-content/uploads/2013/10/loading_spinner.gif" alt="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/2.jpg"></li>
+    <li><img src="http://thinkfuture.com/wp-content/uploads/2013/10/loading_spinner.gif" alt="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/3.jpg"></li>
+    <li><img src="http://thinkfuture.com/wp-content/uploads/2013/10/loading_spinner.gif" alt="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/4.jpg"></li>
+    <li><img src="http://thinkfuture.com/wp-content/uploads/2013/10/loading_spinner.gif" alt="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/5.jpg"></li>
+    <li><img src="http://thinkfuture.com/wp-content/uploads/2013/10/loading_spinner.gif" alt="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/6.jpg"></li>
+    <li><img src="http://thinkfuture.com/wp-content/uploads/2013/10/loading_spinner.gif" alt="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/7.jpg"></li>
+    <li><img src="http://thinkfuture.com/wp-content/uploads/2013/10/loading_spinner.gif" alt="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/8.jpg"></li>
+    <li><img src="http://thinkfuture.com/wp-content/uploads/2013/10/loading_spinner.gif" alt="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/9.jpg"></li>
+    <li><img src="http://thinkfuture.com/wp-content/uploads/2013/10/loading_spinner.gif" alt="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/10.jpg"></li>
+    <li><img src="http://thinkfuture.com/wp-content/uploads/2013/10/loading_spinner.gif" alt="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/11.jpg"></li>
+    <li><img src="http://thinkfuture.com/wp-content/uploads/2013/10/loading_spinner.gif" alt="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/12.jpg"></li>
+    <li><img src="http://thinkfuture.com/wp-content/uploads/2013/10/loading_spinner.gif" alt="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/13.jpg"></li>
+    <li><img src="http://thinkfuture.com/wp-content/uploads/2013/10/loading_spinner.gif" alt="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/14.jpg"></li>
+    <li><img src="http://thinkfuture.com/wp-content/uploads/2013/10/loading_spinner.gif" alt="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/15.jpg"></li>
+    <li><img src="http://thinkfuture.com/wp-content/uploads/2013/10/loading_spinner.gif" alt="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/16.jpg"></li>
+    <li><img src="http://thinkfuture.com/wp-content/uploads/2013/10/loading_spinner.gif" alt="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/17.jpg"></li>
+    <li><img src="http://thinkfuture.com/wp-content/uploads/2013/10/loading_spinner.gif" alt="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/18.jpg"></li>
+    <li><img src="http://thinkfuture.com/wp-content/uploads/2013/10/loading_spinner.gif" alt="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/19.jpg"></li>
+    <li><img src="http://thinkfuture.com/wp-content/uploads/2013/10/loading_spinner.gif" alt="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/20.jpg"></li>
+</ul>
+</body>
+<script src="jquery-3.2.1.min.js"></script>
+<script>
+
+    start()
+
+    $(window).scroll(function () {
+        start()
+    })
+
+    // 判断一个元素是不是出现在窗口
+    function isShow($element) {
+        return $element.offset().top <= $(window).height() + $(window).scrollTop()
+    }
+
+    // 加载一个图片
+    function loadImg($img) {
+        $img.attr('src',$img.attr('data-src'))
+        // 提高浏览器的性能 可以为元素添加一个属性，暴露在视野中的元素添加属性，没有在视野中的没有该属性，最后通过遍历这个属性来来加载图片
+        $img.attr('data-loading',1)
+    }
+
+    function start() {
+        $('.container img').not('[data-loading]').each(function () {
+            var $node = $(this)
+            if ( isShow($node) ) {
+                loadImg($node)
+            }
+        })
+    }    
+    
+</script>
+</html>
