@@ -54,7 +54,7 @@
 }
 .galleys .details .icons li {
     flex: 1;
-    font-size: 1vh;
+    font-size: 2vh;
     color: rgba(255,255,255,0.4);
 }
 .galleys .details .icons li .iconfont {
