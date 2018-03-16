@@ -1,0 +1,174 @@
+#page-music .galleys .active {
+    color: #ff5722;
+}
+
+.galleys {
+    display: flex;
+}
+
+.galleys .aside {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+}
+.galleys .aside figure {
+    width: 46vh;
+    height: 46vh;
+    background-image: url(http://cloud.hunger-valley.com/music/public_tuijian_spring.jpg-middle);
+    background-size: cover;
+    position-position: center center;
+}
+.galleys .aside {
+    margin-bottom: 3vh;
+}
+.galleys .aside .control {
+    display: flex;
+}
+.galleys .aside .control .iconfont {
+    flex: 1;
+    font-size: 4vh;
+    color: rgba(255,255,255,0.4);
+    transition: color .4s;
+    cursor: pointer;
+}
+/* detalis部分样式 */
+.galleys .details {
+    flex: 1;
+    margin-left: 8vh;
+    color: #fff;
+}
+.galleys .details .tag {
+    font-size: 2vh;
+    padding: .4em .8em;
+    background: #2e6eec;
+}
+.galleys .details h1 {
+    font-size: 6vh;
+    margin-top: 2vh;
+}
+.galleys .details .icons {
+    display: flex;
+    font-size: 3vh;
+    margin-top: 12vh;
+}
+.galleys .details .icons li {
+    flex: 1;
+    font-size: 1vh;
+    color: rgba(255,255,255,0.4);
+}
+.galleys .details .icons li .iconfont {
+    margin: 0 5px;
+    color: #fff;
+}
+.galleys .details .progress {
+    margin-top: 10vh;
+    margin-right: 5vh;
+    align-items: center;
+    display: flex;
+}
+.galleys .details .progress .bar {
+    height: 2px;
+    flex: 1;
+    flex-wrap: nowrap;
+    background: rgba(255, 255, 255, 0.4);
+    margin-right: 1vh;
+    position: relative;
+}
+.galleys .details .progress .bar .bar-progress {
+    height: 2px;
+    width: 0%;
+    transition: width .6s;
+    background-color: #fff;
+    border-radius: .2vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.galleys .details .progress .progress-time {
+    width: 3vh;
+    font-size: 2vh;
+    margin-left: 1vh;
+}
+.galleys .details .singer {
+    font-size: 2vh;
+    margin-top: 2vh;
+    color: rgba(255, 255, 255, 0.6);
+}
+.galleys .details .lyrics {
+    font-size: 3vh;
+    margin-top: 3vh;
+    color: rgba(255, 255, 255, 1);
+}
+.galleys .details .lyrics .effects {
+    display: inline-block;
+    opacity: 0;
+}
+
+/* footer栏细节样式 */
+footer .layout {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 24vh;
+}
+footer .box {
+    position: relative;
+    overflow: hidden;
+    height: 24vh;
+    flex: 1;
+}
+footer .box ul {
+    position: absolute;
+    display: flex;
+    left: 0;
+}
+footer .box li {
+    margin: 2vh 2vh 0;
+    width: 20vh;
+    height: 20vh;
+    text-align: center;
+    cursor: pointer;
+}
+footer .iconfont {
+    position: absolute;
+    font-size: 6vh;
+    color: rgba(255, 255, 255, 0.4);
+    opacity: 0;
+    transition: all .4s;
+    cursor: pointer;
+}
+footer:hover .iconfont {
+    opacity: 1;
+}
+
+footer .icon-left {
+    left: -8vh;
+}
+footer .icon-right {
+    right: -8vh;
+}
+
+footer h3{
+    font-size: 2vh;
+    color: rgba(255,255,255,0.6);
+    margin-top: 1vh;
+}
+footer li.active {
+    box-shadow: 0 0 .5vh .5vh rgba(255,255,255,0.8);
+
+}
+footer li:hover {
+    box-shadow: 0 0 .5vh .5vh rgba(255,255,255,0.8);
+}
+footer li .cover {
+    height: 16vh;
+    background-size: cover;
+    background-position: center center;
+}
+
+/* 通用 */
+footer .iconfont:hover,
+.galleys .aside .iconfont:hover{
+    color: rgba(255, 255, 255, 0.8);
+}

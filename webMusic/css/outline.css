@@ -1,0 +1,79 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul,li {
+    list-style: none;
+}
+
+html,body,section {
+    height: 100%;
+    overflow: hidden;
+}
+
+
+main {
+    height: calc(100% - 24vh);
+    padding: 12vh 0 4vh 0;
+}
+
+.layout {
+    width: 1100px;
+    margin: 0 auto;
+}
+
+footer {
+    height: 24vh;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0px -.25vh .25vh .25vh rgba(255,255,255,0.2);
+}
+
+@media (min-width: 700px) {
+    .layout {
+        width: 600px;
+    }
+}
+@media (min-width: 900px) {
+    .layout {
+        width: 800px;
+    }
+}
+@media (min-width: 1000px) {
+    .layout {
+        width: 900px;
+    }
+}
+@media (min-width: 1200px) {
+    .layout {
+        width: 1100px;
+    }
+}
+
+
+.bg {
+    position: absolute;
+    z-index: -1;
+    left: -10px;
+    top: -10px;
+    bottom: -10px;
+    right: -10px;
+    background: url(http://cloud.hunger-valley.com/music/public_tuijian_spring.jpg-big) center center no-repeat;
+    background-size: cover;
+    filter: blur(4px);
+}
+.bg::before{
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    background: rgba(0,0,0,0.4);
+}
