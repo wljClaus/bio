@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        ul {
+            display:flex;
+            list-style:none;
+            margin:0;
+            padding:0
+        }
+        ul li {
+            border:1px solid;
+            padding:5px;
+            background:gray;
+            cursor: pointer
+        }
+        ul li.active {
+            background:#fff;
+
+        }
+        .content .panel {
+            border:1px solid;
+            width:300px;
+            height:100px;
+            background:#fff;
+            display:none;
+        }
+        .content .panel.active {
+            display:block;
+        }
+    </style>
+</head>
+<body>
+
+<ul id=sss>
+    <li class='tab active'>页面1</li>
+    <li class='tab'>页面2</li>
+    <li class='tab'>页面3</li>
+    <li class='tab'>页面4</li>
+</ul>
+<div class=content>
+    <div class='panel active'>页面1</div>
+    <div class='panel'>页面2</div>
+    <div class='panel'>页面3</div>
+    <div class='panel'>页面4</div>
+</div>
+<script>
+    function Tab(node) {
+        this.item = node.querySelectorAll('li')
+        this.init()
+    }
+    Tab.prototype = {
+        init : function () {
+            this.$btn = this.item
+            this.bind()
+        },
+        bind : function () {
+            var _this = this
+            _this.$btn.forEach(function (value) {
+                value.addEventListener('click',function () {
+                    var idx
+                    _this.$btn.forEach(function (val1,val2) {
+                        val1.classList.remove('active')
+                        if (value === val1) {
+                            idx = val2
+                        }
+                    })
+                    this.classList.add('active')
+
+                    this.parentElement.nextElementSibling.querySelectorAll('.panel').forEach(function (panel) {
+                        panel.classList.remove('active')
+                    })
+                    this.parentElement.nextElementSibling.querySelectorAll('.panel')[idx].classList.add('active')
+
+                })
+            })
+        }
+    }
+    var tab1 = new Tab(document.querySelector('#sss'))
+</script>
+</body>
+</html>
